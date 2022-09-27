@@ -2354,6 +2354,12 @@ static void mFilamentItem_PET()
     mFilamentItem(PET_PREHEAT_HOTEND_TEMP, PET_PREHEAT_HPB_TEMP);
 }
 
+static void mFilamentItem_BED()
+{
+    bFilamentPreheatState = false;
+    mFilamentItem(BED_PREHEAT_HOTEND_TEMP, BED_PREHEAT_HPB_TEMP);
+}
+
 static void mFilamentItem_ASA()
 {
     bFilamentPreheatState = false;
@@ -2428,6 +2434,7 @@ void lcd_generic_preheat_menu()
     }
     else
     {
+        MENU_ITEM_SUBMENU_P(PSTR("BED  -  " STRINGIFY(BED_PREHEAT_HOTEND_TEMP) "/" STRINGIFY(BED_PREHEAT_HPB_TEMP)),mFilamentItem_BED);
         MENU_ITEM_SUBMENU_P(PSTR("PLA  -  " STRINGIFY(PLA_PREHEAT_HOTEND_TEMP) "/" STRINGIFY(PLA_PREHEAT_HPB_TEMP)),mFilamentItem_PLA);
         MENU_ITEM_SUBMENU_P(PSTR("PET  -  " STRINGIFY(PET_PREHEAT_HOTEND_TEMP) "/" STRINGIFY(PET_PREHEAT_HPB_TEMP)),mFilamentItem_PET);
         MENU_ITEM_SUBMENU_P(PSTR("ASA  -  " STRINGIFY(ASA_PREHEAT_HOTEND_TEMP) "/" STRINGIFY(ASA_PREHEAT_HPB_TEMP)),mFilamentItem_ASA);
